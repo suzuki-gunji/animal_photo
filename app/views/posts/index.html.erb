@@ -1,7 +1,9 @@
-<%= image_tag post.image.variant(resize: '500x500'), class: 'post-image' if post.image.attached? %>
 
 <% @posts.each do |post| %>
   <ul>
+    <li>
+      <%= image_tag post.image.variant(resize: '500x500'), class: 'post-image' if post.image.attached? %>
+    </li>
     <li>
       <%= post.image %>
       <%= post.title %>
