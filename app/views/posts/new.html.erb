@@ -1,0 +1,6 @@
+<%= form_with model: @post, local: true do |f| %>
+  <%= render 'shared/error_messages', model: f.object %>
+  <%= f.file_field :image, id:"post-image" %>
+  <%= f.text_area :title, id:"post-title" %>
+  <%= f.submit "投稿する" ,class:"btn" %>
+<% end %>

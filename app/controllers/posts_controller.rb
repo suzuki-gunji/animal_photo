@@ -3,9 +3,23 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+  def new
+    @post = Post.new
+
+  end
+
+  def create
+    @post = Post.new(post_params)
+    if @post.save
+      redirect_to root_path
+    else
+      render :new 
+    end  
+  end
+
   private
 
-  def message_params
-    params.require(:post).permit(:image).merge(user_id: current_user.id)
+  def post_params
+    params.require(:post).permit(:image, :title).merge(user_id: current_user.id)
   end
 end
