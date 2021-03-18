@@ -1,4 +1,7 @@
-<%= current_user.nickname %>
+
+<% if user_signed_in? %>
+  <%= current_user.nickname %>
+<% end %>
 
 <p>
   <%= link_to "投稿する", new_post_path, class: "post" %>
@@ -7,7 +10,7 @@
 <% @posts.each do |post| %>
   <ul>
     <li>
-      <%= image_tag post.image.variant(resize: '500x500'), class: 'post-image' if post.image.attached? %>
+      <%= image_tag post.image.thumb.url, class: 'post-image' %>
     </li>
     <li>
       <%= post.image %>
