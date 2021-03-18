@@ -60,4 +60,9 @@ gem 'mini_magick'
 gem 'image_processing', '~> 1.2'
 
 gem 'rb-readline'
-gem 'pry-rails' 
+
+gem 'pry-rails'
+
+gem 'carrierwave', '~> 1.3', '>= 1.3.1'
+gem 'rmagick'
+
