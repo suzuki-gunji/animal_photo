@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     @user = current_user
-    @nickname = current_user.id
+    @nickname = @user.nickname
     @posts = current_user.posts
   end
 
