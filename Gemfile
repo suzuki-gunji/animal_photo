@@ -66,3 +66,6 @@ gem 'pry-rails'
 gem 'carrierwave', '~> 1.3', '>= 1.3.1'
 gem 'rmagick'
 
+gem 'active_hash'
+
+
