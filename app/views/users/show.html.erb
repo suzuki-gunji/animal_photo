@@ -1,13 +1,4 @@
-<%= link_to "マイページ", user_path(current_user.id)%>
-<%= link_to 'もどる', root_path, class:"back-btn" %>
-
-<% if user_signed_in? %>
-  <%= current_user.nickname %>
-<% end %>
-
-<p>
-  <%= link_to "投稿する", new_post_path, class: "post" %>
-</p>
+<%= @nickname %>さんの投稿一覧
 
 <% @posts.each do |post| %>
   <p><%= image_tag post.image.thumb.url, class: 'post-image' %></p>
