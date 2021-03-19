@@ -8,14 +8,13 @@
 </p>
 
 <% @posts.each do |post| %>
+  <p><%= image_tag post.image.thumb.url, class: 'post-image' %></p>
   <ul>
     <li>
-      <%= image_tag post.image.thumb.url, class: 'post-image' %>
+      <p>タイトル : <%= post.title %></p>
     </li>
     <li>
-      <%= post.image %>
-      <%= post.title %>
-      <%= post.user.nickname %>
+      <p>ユーザー名 : <%= post.user.nickname %></p>
     </li>
   </ul>
 <% end %>

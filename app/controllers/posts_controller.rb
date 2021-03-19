@@ -5,12 +5,10 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
-
   end
 
   def create
     @post = Post.new(post_params)
-    binding.pry
     if @post.save
       redirect_to root_path
     else
