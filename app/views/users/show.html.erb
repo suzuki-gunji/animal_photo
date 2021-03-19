@@ -1,13 +1,12 @@
+<%= @nickname %>さんのプロフィール
+<p><%= @user.profile %></p>
+<p><%= link_to 'プロフィール修正', edit_user_path(@user.id) %></p>
+
 <%= @nickname %>さんの投稿一覧
 
 <% @posts.each do |post| %>
   <p><%= image_tag post.image.thumb.url, class: 'post-image' %></p>
-  <ul>
-    <li>
-      <p>タイトル : <%= post.title %></p>
-    </li>
-    <li>
-      <p>ユーザー名 : <%= post.user.nickname %></p>
-    </li>
-  </ul>
+  <p>タイトル : <%= post.title %></p>
 <% end %>
+
+<%= link_to 'もどる', root_path, class:"back-btn" %>
