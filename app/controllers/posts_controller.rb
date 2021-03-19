@@ -10,6 +10,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    binding.pry
     if @post.save
       redirect_to root_path
     else
@@ -20,6 +21,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:image, :title).merge(user_id: current_user.id)
+    params.require(:post).permit(:image, :title, :animal_type_id).merge(user_id: current_user.id)
   end
 end

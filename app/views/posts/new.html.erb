@@ -1,6 +1,9 @@
 <%= form_with model: @post, local: true do |f| %>
   <%= render 'shared/error_messages', model: f.object %>
-  <%= f.file_field :image, id:"post-image" %>
+  <%= f.file_field :image %>
   <%= f.text_area :title, id:"post-title" %>
+  <%= f.collection_select(:animal_type_id, Animal_type.all, :id, :type, {}, {class:"genre-select"}) %>
   <%= f.submit "投稿する" ,class:"btn" %>
 <% end %>
+
+<%= link_to 'もどる', root_path, class:"back-btn" %>
