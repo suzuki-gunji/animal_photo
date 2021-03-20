@@ -8,4 +8,6 @@ class User < ApplicationRecord
 
   validates :nickname, presence: true
   validates :profile, length: { maximum: 200 }
+
+  mount_uploader :image, ImageUploader
 end

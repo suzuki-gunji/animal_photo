@@ -1,7 +1,7 @@
 <%= form_with model: @user, local: true do |f| %>
 
   <%= render 'shared/error_messages', model: f.object %>
-  
+
   <div class="field">
     <%= f.label :nickname %><br />
     <%= f.text_field :nickname, autofocus: true %>
@@ -11,6 +11,12 @@
     <%= f.label :profile %><br />
     <%= f.text_field :profile %>
   </div>
+
+  <div class="field">
+    <%= f.label :image %><br />
+    <%= f.file_field :image %>
+  </div>
+
 
   <%= f.submit "投稿する" ,class:"btn" %>
 <% end %>

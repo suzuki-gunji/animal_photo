@@ -1,7 +1,7 @@
 <%= @nickname %>さんのプロフィール
 <p><%= @user.profile %></p>
+<p><%= image_tag @user.image.thumb.url %></p>
 <p><%= link_to 'プロフィール修正', edit_user_path(@user.id) %></p>
-
 <%= @nickname %>さんの投稿一覧
 
 <% @posts.each do |post| %>
