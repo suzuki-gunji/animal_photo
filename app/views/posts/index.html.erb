@@ -16,6 +16,7 @@
       <p>ユーザー名 : <%= post.user.nickname %></p>
     </li>
   </ul>
+  <%= link_to '削除', post_path(post.id), method: :delete %>
 
   <% if post.liked_by?(current_user) %>
     <td>

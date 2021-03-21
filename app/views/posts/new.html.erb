@@ -2,7 +2,7 @@
   <%= render 'shared/error_messages', model: f.object %>
   <%= f.file_field :image %>
   <%= f.text_area :title, id:"post-title" %>
-  <%= f.collection_select(:animal_type_id, Animal_type.all, :id, :type, {}, {class:"genre-select"}) %>
+  <%= f.collection_select(:animal_type_id, AnimalType.all, :id, :type, {}, {class:"genre-select"}) %>
   <%= f.submit "投稿する" ,class:"btn" %>
 <% end %>
 
