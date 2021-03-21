@@ -69,3 +69,4 @@ gem 'rmagick'
 gem 'active_hash'
 
 
+

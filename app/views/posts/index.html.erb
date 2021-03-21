@@ -16,4 +16,18 @@
       <p>ユーザー名 : <%= post.user.nickname %></p>
     </li>
   </ul>
+
+  <% if post.liked_by?(current_user) %>
+    <td>
+      <%= link_to like_posts_path(post), class: "like", remote: true do %>
+        <i class="fas fa-heart" id="<%= post.id %>"></i>
+      <% end %>
+    </td>
+  <% else %>
+    <td>
+      <%= link_to like_posts_path(post), class: "like", remote: true do %>
+        <i class="far fa-heart" id="<%= post.id %>"></i>
+      <% end %>
+    </td>
+  <% end %>
 <% end %>

@@ -16,6 +16,22 @@ class PostsController < ApplicationController
     end  
   end
 
+  
+
+  def like
+    post = Post.find(params[:id])
+    binding.pry
+    if post.liked_by?(current_user)
+      like = current_user.likes.find_by(post_id: post.id)
+      like.destroy
+      render json: post.id
+    else
+      like = current_user.likes.new(post_id: post.id)
+      like.save
+      render json: post.id
+    end
+  end
+
   private
 
   def post_params

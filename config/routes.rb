@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: "posts#index"
   resources :posts
   resources :users, only: [:show, :edit, :update]
+  get 'posts/like/:id' => 'posts#like', as: "like_posts"
 end
