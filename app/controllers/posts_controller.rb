@@ -24,7 +24,6 @@ class PostsController < ApplicationController
 
   def like
     post = Post.find(params[:id])
-    binding.pry
     if post.liked_by?(current_user)
       like = current_user.likes.find_by(post_id: post.id)
       like.destroy
