@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create,]
+  before_action :move_to_index, only: [:destroy,]
   def index
     @posts = Post.all
   end
@@ -34,6 +36,14 @@ class PostsController < ApplicationController
       render json: post.id
     end
   end
+
+  def move_to_index
+    @post = Post.find(params[:id])
+    @user = current_user.id
+    unless user_signed_in? && @post.user_id == @user
+      redirect_to action: :index
+    end  
+  end 
 
   private
 
