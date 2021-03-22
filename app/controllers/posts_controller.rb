@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create,]
   before_action :move_to_index, only: [:destroy,]
   def index
-    @posts = Post.all
+    @posts = Post.includes(:user)
   end
 
   def new
