@@ -1,4 +1,8 @@
-<p><%= link_to "マイページ", user_path(current_user.id)%></p>
+ユーザー登録
+<ul>
+  <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+</ul>
 
 <% if user_signed_in? %>
   <%= current_user.nickname %>
@@ -13,7 +17,9 @@
       <p>タイトル : <%= post.title %></p>
     </li>
     <li>
-      <p>ユーザー名 : <%= post.user.nickname %></p>
+      <p>
+        ユーザー名 : <%= link_to post.user.nickname, user_path(post.user.id)%>
+      </p>
     </li>
   </ul>
   <%= link_to '削除', post_path(post.id), method: :delete %>
@@ -22,6 +28,7 @@
     <td>
       <%= link_to like_posts_path(post), class: "like", remote: true do %>
         <i class="fas fa-heart" id="<%= post.id %>"></i>
+        <%= post.likes.count %>
       <% end %>
     </td>
   <% else %>
