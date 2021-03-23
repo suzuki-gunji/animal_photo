@@ -1,14 +1,14 @@
-ユーザー登録
-<ul>
-  <li><%= link_to "マイページ", user_path(current_user.id) %></li>
-  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
-</ul>
-
 <% if user_signed_in? %>
+  <ul>
+    <li><%= link_to "マイページ", user_path(current_user.id) %></li>
+    <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+  </ul>
   <%= current_user.nickname %>
+  <p><%= link_to "投稿する", new_post_path, class: "post" %></p>
+<% else %>
+  <%= link_to 'ユーザー登録する', new_user_registration_path %>
+  <%= link_to 'ログインする', new_user_session_path %>
 <% end %>
-
-<p><%= link_to "投稿する", new_post_path, class: "post" %></p>
 
 <% @posts.each do |post| %>
   <p><%= image_tag post.image.thumb.url, class: 'post-image' %></p>
@@ -22,21 +22,23 @@
       </p>
     </li>
   </ul>
-  <% if post.user == current_user %>
-    <%= link_to '削除', post_path(post.id), method: :delete %>
-  <% end %>
-  <% if post.liked_by?(current_user) %>
-    <td>
-      <%= link_to like_posts_path(post), class: "like", remote: true do %>
-        <i class="fas fa-heart" id="<%= post.id %>"></i>
-        <%= post.likes.count %>
-      <% end %>
-    </td>
-  <% else %>
-    <td>
-      <%= link_to like_posts_path(post), class: "like", remote: true do %>
-        <i class="far fa-heart" id="<%= post.id %>"></i>
-      <% end %>
-    </td>
+  <% if user_signed_in? %>
+    <% if post.user == current_user %>
+      <%= link_to '削除', post_path(post.id), method: :delete %>
+    <% end %>
+    <% if post.liked_by?(current_user) %>
+      <td>
+        <%= link_to like_posts_path(post), class: "like", remote: true do %>
+          <i class="fas fa-heart" id="<%= post.id %>"></i>
+          <%= post.likes.count %>
+        <% end %>
+      </td>
+    <% else %>
+      <td>
+        <%= link_to like_posts_path(post), class: "like", remote: true do %>
+          <i class="far fa-heart" id="<%= post.id %>"></i>
+        <% end %>
+      </td>
+    <% end %>
   <% end %>
 <% end %>
