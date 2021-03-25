@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create,]
+  before_action :find_params, only: [:destroy, :like, :move_to_index,]
   before_action :move_to_index, only: [:destroy,]
   def index
     @posts = Post.includes(:user)
@@ -19,21 +20,19 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = Post.find(params[:id])
-    post.destroy
+    @post.destroy
     redirect_to root_path
   end
 
   def like
-    post = Post.find(params[:id])
-    if post.liked_by?(current_user)
-      like = current_user.likes.find_by(post_id: post.id)
+    if @post.liked_by?(current_user)
+      like = current_user.likes.find_by(post_id: @post.id)
       like.destroy
-      render json: post.id
+      render json: @post.id
     else
-      like = current_user.likes.new(post_id: post.id)
+      like = current_user.likes.new(post_id: @post.id)
       like.save
-      render json: post.id
+      render json: @post.id
     end
   end
 
@@ -49,5 +48,9 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:image, :title, :animal_type_id).merge(user_id: current_user.id)
+  end
+
+  def find_params
+    @post = Post.find(params[:id])
   end
 end
