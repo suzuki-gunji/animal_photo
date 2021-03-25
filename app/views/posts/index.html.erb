@@ -1,9 +1,9 @@
 <% if user_signed_in? %>
+  <p>ようこそ、<%= current_user.nickname %>さん</p>
   <ul>
     <li><%= link_to "マイページ", user_path(current_user.id) %></li>
     <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
   </ul>
-  <%= current_user.nickname %>
   <p><%= link_to "投稿する", new_post_path, class: "post" %></p>
 <% else %>
   <%= link_to 'ユーザー登録する', new_user_registration_path %>
