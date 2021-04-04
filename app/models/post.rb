@@ -15,8 +15,9 @@ class Post < ApplicationRecord
 
   validates :title, :image, :animal_type_id, presence: true
   validates :animal_type_id, numericality: { other_than: 1 } 
-
-  def liked_by?(user) #いいねしているかどうか
+  
+  #いいねしているかどうか
+  def liked_by?(user) 
     likes.where(user_id: user.id).exists?
   end
 end
