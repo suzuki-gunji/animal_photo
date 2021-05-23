@@ -36,11 +36,11 @@
   <p><%= image_tag post.image.thumb.url, class: 'post-image' %></p>
   <ul>
     <li>
-      <p>タイトル : <%= post.title %></p>
+      <p>タイトル <%= post.title %></p>
     </li>
     <li>
       <p>
-        ユーザー名 : <%= link_to post.user.nickname, user_path(post.user.id)%>
+        ユーザー名 <%= link_to post.user.nickname, user_path(post.user.id)%>
       </p>
     </li>
   </ul>
